@@ -88,80 +88,83 @@ const Checkups = () => {
   };
 
   return (
-    <div className="bg-white">
-      <div className='w-4/5 mx-auto flex flex-wrap justify-start'>
-      <div className='w-full font-semibold text-4xl text-center' id='textColor'>
-        <div className='flex my-4'>
-          <MdHealthAndSafety /> &nbsp; &nbsp;
-          <h1 className='text-4xl font-medium'>Checkup</h1>
-        </div>
-        </div>
+<div className="bg-white">
+  <div className='w-4/5 mx-auto flex flex-wrap justify-start'>
+    <div className='w-full font-semibold text-4xl text-center' id='textColor'>
+      <div className='flex my-4'>
+        <MdHealthAndSafety /> &nbsp; &nbsp;
+        <h1 className='text-4xl font-medium'>Checkup</h1>
       </div>
-      <div className="flex h-screen bg-white w-4/5 mx-auto">
-        {/* Sidebar */}
-        <div className="w-1/4 p-4 border-r border-gray-300">
+    </div>
+  </div>
+
+  <div className="flex flex-col md:flex-row bg-white w-4/5 mx-auto">
+    {/* Sidebar */}
+    <div className="w-full md:w-1/4 p-4 border-r border-gray-300">
+      <ul>
+        {categories.map((category, index) => (
+          <li
+            key={index}
+            onClick={() => handleCategoryClick(index)}
+            className={`mt-2 cursor-pointer rounded-md text-xl pl-3 py-3 ${
+              selectedCategory === index ? 'bg-gray-300' : 'hover:bg-gray-100'
+            } border-b border-gray-300`}
+          >
+            {category.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+    {/* Sidebar */}
+
+    {/* Main Content */}
+    <div className="flex-grow border-gray-300 p-8">
+      {selectedCategory !== null && (
+        <div>
+          <h3 className="text-2xl font-bold mb-4">{categories[selectedCategory].name}</h3>
           <ul>
-            {categories.map((category, index) => (
+            {categories[selectedCategory].subcategories.map((subcategory, index) => (
               <li
                 key={index}
-                onClick={() => handleCategoryClick(index)}
-                className={`mt-2 cursor-pointer rounded-md text-xl pl-3 py-3 ${
-                  selectedCategory === index ? 'bg-gray-300' : 'hover:bg-gray-100'
-                } border-b border-gray-300`}
+                onClick={() => handleSubcategoryClick(index)}
+                className={`mb-2 p-2 flex justify-between ${
+                  'border-b border-gray-300'
+                } ${
+                  selectedSubcategories.includes(index)
+                    ? 'bg-gray-300 shadow-md rounded-md'
+                    : 'hover:bg-gray-100 cursor-pointer'
+                }`}
               >
-                {category.name}
+                <div>
+                  <h4 className="text-xl font-semibold">{subcategory.title}</h4>
+                  <p>{subcategory.description}</p>
+                </div>
+                <div className="text-right">
+                  <p>Rs. {subcategory.cost}</p>
+                </div>
               </li>
             ))}
           </ul>
-        </div>
-        {/* Sidebar */}
-
-        {/* Main Content */}
-        <div className="flex-grow border-gray-300 p-8">
-          {selectedCategory !== null && (
-            <div>
-              <h3 className="text-2xl font-bold mb-4">{categories[selectedCategory].name}</h3>
-              <ul>
-                {categories[selectedCategory].subcategories.map((subcategory, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleSubcategoryClick(index)}
-                    className={`mb-2 p-2 flex justify-between ${
-                       'border-b border-gray-300'
-                                          } ${
-                      selectedSubcategories.includes(index)
-                        ? 'bg-gray-300 shadow-md rounded-md'
-                        : 'hover:bg- cursor-pointer'
-                    }`}
-                  >
-                    <div>
-                      <h4 className="text-xl font-semibold">{subcategory.title}</h4>
-                      <p>{subcategory.description}</p>
-                    </div>
-                    <div className="text-right">
-                      <p>Rs. {subcategory.cost}</p>
-                    </div>
-                  </li>
-                ))}
-                <div className='flex items-center font-bold justify-between'>
-                  {selectedSubcategories.length > 0 && <li className="mt-4  text-xl">Total Cost: Rs. {totalCost}</li>}
-                  {selectedSubcategories.length > 0 && (
-                    <li className="mt-4 flex justify-end">
-                      <button
-                        onClick={handleSubmit}
-                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
-                      >
-                        Book Now
-                      </button>
-                    </li>
-                  )}
-                </div>
-              </ul>
+          {selectedSubcategories.length > 0 && (
+            <div className='flex items-center font-bold justify-between'>
+              <li className="mt-4 text-xl">Total Cost: Rs. {totalCost}</li>
+              <li className="mt-4 flex justify-end">
+                <button
+                  onClick={handleSubmit}
+                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
+                >
+                  Book Now
+                </button>
+              </li>
             </div>
           )}
         </div>
-      </div>
+      )}
     </div>
+    {/* Main Content */}
+  </div>
+</div>
+
   );
 };
 

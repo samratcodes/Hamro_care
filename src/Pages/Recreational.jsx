@@ -95,45 +95,47 @@ const Recreational = () => {
   }, []);
 
   return (
-    <div className='w-4/5 mx-auto flex flex-wrap justify-start'>
-      <div className='w-full font-semibold text-4xl text-center pl-5' id='textColor'>
-        <div className='flex my-4'>
-          <FaPeopleRobbery /> &nbsp; &nbsp;
-          <h1 className='text-4xl font-medium'>Recreational Activities</h1>
+<div className='w-4/5 mx-auto flex flex-wrap justify-start'>
+  <div className='w-full font-semibold text-4xl text-center pl-5' id='textColor'>
+    <div className='flex my-4'>
+      <FaPeopleRobbery /> &nbsp; &nbsp;
+      <h1 className='text-4xl font-medium'>Recreational Activities</h1>
+    </div>
+  </div>
+
+  {activities.map((activity, index) => (
+    <div key={index} className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 flex items-stretch'>
+      <div className='bg-white border border-gray-200 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out w-full'>
+        <div className='flex items-center mb-4'>
+          {activity.icon} &nbsp; &nbsp;
+          <h2 className='text-2xl font-medium'>{activity.title}</h2>
+        </div>
+        <p className='text-gray-600 my-2'>{activity.description}</p>
+        <div className='flex justify-end'>
+          <button className='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300 ease-in-out' onClick={() => openModal(activity)}>Book Now</button>
         </div>
       </div>
-
-      {activities.map((activity, index) => (
-        <div key={index} className='w-1/2 sm:w-1/3 lg:w-1/3 xl:w-1/3 p-4 flex items-stretch'>
-          <div className='bg-white border border-gray-200 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out w-full'>
-            <div className='flex items-center mb-4'>
-              {activity.icon} &nbsp; &nbsp;
-              <h2 className='text-2xl font-medium'>{activity.title}</h2>
-            </div>
-            <p className='text-gray-600 my-2'>{activity.description}</p>
-            <div className='flex justify-end'>
-              <button className='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300 ease-in-out' onClick={() => openModal(activity)}>Book Now</button>
-            </div>
-          </div>
-        </div>
-      ))}
-
-      {selectedActivity && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white px-8 pt-8 rounded-md w-1/2 h-3/5">
-            <h2 className="text-2xl font-semibold mb-4">{selectedActivity.title}</h2>
-            <p className="text-gray-600 mb-4">{selectedActivity.description}</p>
-            <p className="text-gray-600 mb-4"><strong>Location:</strong> {selectedActivity.location}</p>
-            <p className="text-gray-600 mb-4"><strong>Date:</strong> {selectedActivity.date}</p>
-            <p className="text-gray-600 mb-4"><strong>Instructor:</strong> {selectedActivity.instructor}</p>
-            <p className="text-gray-600 mb-4"><strong>Cost:</strong> Rs. {selectedActivity.cost}</p>
-            <div className='flex justify-end'>
-              <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300 ease-in-out" onClick={closeModal}>Book Now</button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
+  ))}
+
+{selectedActivity && (
+  <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white px-4 pt-4 pb-8 sm:px-8 sm:py-8 rounded-md w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
+      <h2 className="text-2xl font-semibold mb-4">{selectedActivity.title}</h2>
+      <p className="text-gray-600 mb-4">{selectedActivity.description}</p>
+      <p className="text-gray-600 mb-4"><strong>Location:</strong> {selectedActivity.location}</p>
+      <p className="text-gray-600 mb-4"><strong>Date:</strong> {selectedActivity.date}</p>
+      <p className="text-gray-600 mb-4"><strong>Instructor:</strong> {selectedActivity.instructor}</p>
+      <p className="text-gray-600 mb-4"><strong>Cost:</strong> Rs. {selectedActivity.cost}</p>
+      <div className='flex justify-end'>
+        <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300 ease-in-out" onClick={closeModal}>Book Now</button>
+      </div>
+    </div>
+  </div>
+)}
+
+</div>
+
   );
 }
 

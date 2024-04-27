@@ -20,6 +20,15 @@ const Home = () => {
       date: '2024-02-20',
     },
     {
+      icon: <FaPaintBrush />,
+      title: 'Arts and Craft',
+      description: 'With our Arts & Crafts classes, you may unleash your creative side. Come participate in enjoyable and engaging craft activities that are ideal for self-expression and building relationships with other art enthusiasts.',
+      location: 'Art Studio, Baluwatar',
+      instructor: 'Jane Doe',
+      cost: '100 per session',
+      date: '2024-02-20',
+    },
+    {
       icon: <FaChair />,
       title: 'Light/Chair Exercises',
       description: 'Stay active and healthy with our Light/Chair Exercises. Tailored for all abilities, these sessions focus on gentle movements to improve flexibility and strength. Join us to boost your well-being in a supportive environment.',
@@ -77,7 +86,7 @@ const Home = () => {
         <div className=' rounded-full w-24 h-24'>
         <img className=' object-cover w-full h-full rounded-full' src="https://images.pexels.com/photos/3831645/pexels-photo-3831645.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
         </div>
-        <h1 className="text-3xl font-bold mb-4">{user.name}'s Profile</h1>
+        <h1 className="sm:text-3xl font-bold mb-4 text-2xl">{user.name}'s Profile</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">Age</h2>
@@ -109,50 +118,51 @@ const Home = () => {
      Activities
      </h1>
       </div>
-    <div className='flex w-full '>
-    
-      <Chart
-        width={'800px'}
-        height={'600px'}
-        chartType="PieChart"
-        data={data}
-        options={options}
-      />
-      <Chart
-        width={'700px'}
-        height={'600px'}
-        chartType="LineChart"
-        data={lineChartData}
-        options={lineChartOptions}
-      />
+      <div className='flex flex-col sm:flex-row w-full overflow-hidden'>
+  <Chart
+    width={'100%'}
+    height={'400px'}
+    chartType="PieChart"
+    data={data}
+    options={options}
+    className='w-full'
+  />
+  <Chart
+    width={'100%'}
+    height={'400px'}
+    chartType="LineChart"
+    data={lineChartData}
+    options={lineChartOptions}
+    className='w-full sm:w-1/2'
+  />
+</div>
 
     </div>
-    </div>
-<div className='w-full  flex flex-col justify-center items-center '>
-<div className='w-4/5 flex justify-start items-center  font-semibold text-2xl' id='textColor'>
-    <FaBookmark />   &nbsp; &nbsp;
-      <h1 className='text-4xl font-medium'>
+<div className='w-full flex flex-col justify-center items-center'>
+  <div className='w-4/5 flex justify-start items-center font-semibold text-2xl' id='textColor'>
+    <FaBookmark /> &nbsp; &nbsp;
+    <h1 className='text-4xl font-medium'>
       Booked Events
-      </h1>
-    </div>
-<div className='flex w-4/5'>
-
-              {events.map((activity, index) => (
-        <div key={index} className='w-1/2 sm:w-1/3 lg:w-1/3 xl:w-1/3 p-4 flex items-stretch'>
-          <div className='bg-white border border-gray-200 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out w-full'>
-            <div className='flex items-center mb-4'>
-              {activity.icon} &nbsp; &nbsp;
-              <h2 className='text-2xl font-medium'>{activity.title}</h2>
-            </div>
-            <p className='text-gray-600 my-2'>{activity.description}</p>
-            <div className='flex justify-end'>
-              <button className='bg-green-500 text-white px-4 py-2 rounded' onClick={() => openModal(activity)}>Booked </button>
-            </div>
+    </h1>
+  </div>
+  <div className='flex flex-wrap   justify-center'>
+    {events.map((activity, index) => (
+      <div key={index} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 flex items-stretch'>
+        <div className='bg-white border border-gray-200 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 ease-in-out w-full'>
+          <div className='flex items-center mb-4'>
+            {activity.icon} &nbsp; &nbsp;
+            <h2 className='text-2xl font-medium'>{activity.title}</h2>
+          </div>
+          <p className='text-gray-600 my-2'>{activity.description}</p>
+          <div className='flex justify-end'>
+            <button className='bg-green-500 text-white px-4 py-2 rounded' onClick={() => openModal(activity)}>Booked </button>
           </div>
         </div>
-      ))}
+      </div>
+    ))}
+  </div>
 </div>
-</div>
+
 
     </div>
   

@@ -1,8 +1,37 @@
-# React + Vite
+## **HamroCare**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to HamroCare, a web application developed during KEC Hackalite. HamroCare focuses on providing care services to older people. 
 
-Currently, two official plugins are available:
+## Features:
+- **Care Services:** Access a variety of care services tailored for older individuals.
+- **User-Friendly Interface:** Intuitive design for easy navigation and usage.
+- **Responsive:** Optimized for different screen sizes to ensure accessibility across devices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Technologies Used:
+- **React.js:** A JavaScript library for building user interfaces, used for the frontend development.
+- **Tailwind CSS:** A utility-first CSS framework for quickly building custom designs.
+
+### Access the Web Application:
+- [HamroCare Web Application](https://hamrocare.netlify.app/)
+
+### Installation:
+1. Clone the repository.
+   ```
+   git clone https://github.com/your-username/hamrocare.git
+   ```
+2. Install dependencies.
+   ```
+   cd hamrocare
+   npm install
+   ```
+3. Start the development server.
+   ```
+   npm start
+   ```
+
+### Contributing:
+Contributions are welcome! Feel free to fork the repository, make changes, and submit pull requests.
+
+### License:
+This project is licensed under the [MIT License](LICENSE).
+

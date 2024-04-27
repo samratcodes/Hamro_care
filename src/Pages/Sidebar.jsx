@@ -7,6 +7,7 @@ import { GiMeditation } from "react-icons/gi";
 import { GiFruitBowl } from "react-icons/gi";
 import { FaTaxi } from "react-icons/fa6";
 import { FaPeopleRobbery } from "react-icons/fa6";
+import Logo from '../assets/logowhite.png'
 const Sidebar = () => {
 const [sidebar, setSidebar] = useState([{
     name: 'Home',
@@ -53,7 +54,7 @@ const [sidebar, setSidebar] = useState([{
         <div className='w-4/5 justify-between items-center  flex' id='options'>
 <div className='w-24 rounded-3xl m-2 mt-4 pr-6'>
   <Link to={'/'}>
-    <img className='cursor-pointer object-cover w-full h-full' src="src\assets\logowhite.png" alt="" />
+  <img className='cursor-pointer object-cover w-full h-full' src={Logo} alt="" />
   </Link>
 </div>
 {
